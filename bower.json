@@ -1,0 +1,9 @@
+{
+  "name": "dns_manager",
+  "version": "0.0.1",
+  "dependencies": {
+    "jquery": "*",
+    "modernizr": "*",
+    "bootstrap": "*"
+  }
+}

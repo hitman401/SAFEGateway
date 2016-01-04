@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>SAFE Drive</title>
+		<link rel="stylesheet" href="./index.css">
+		<script type="application/javascript" src="./jquery.js"></script>
+		<script type="application/javascript" src="./nacl.js"></script>
+	</head>
+	<body>
+		<h3>SAFE Drive for Web</h3>
+		<div id="result" style="margin: 10px">
+
+		</div>
+		<button type="button" onclick="authorise()">Authorise</button>
+		<button type="button"  onclick="getDirectoryList()">List directories</button>
+		<script>
+			var token;
+			var arrayToBase64 = function(array) {
+				var i, s = [], len = array.length;
+				for (i = 0; i < len; i++) {
+					s.push(String.fromCharCode(array[i]));
+				}
+				return btoa(s.join(''));
+			};
+			var authorise = function() {
+				$.ajax({
+					url: 'http://api.safenet/auth/registeredAccess',
+					type: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					data: JSON.stringify({
+						"app": {
+							"name": 'SAFEDrive - Web',
+							"vendor": 'Maidsafe',
+							"id": 'com.maidsafe.drive'
+						},
+						"permissions": ['SAFE DRIVE ACCESS'],
+						"publicKey": arrayToBase64(nacl.box.keyPair().secretKey),
+						"nonce": arrayToBase64(nacl.randomBytes(nacl.lowlevel.crypto_box_NONCEBYTES))
+					}),
+					success: function(res) {
+						token = res.token;
+						$('#result').html('Authorised Successfully');
+					},
+					error: function(a, status) {
+						$('#result').html(status);
+					}
+				})
+			};
+			var getDirectoryList = function() {
+				$.ajax({
+					url: 'http://api.safenet/v1/nfs/directoryList',
+					headers: {
+						'Authorization': ('Bearer ' + token)
+					},
+					success: function(res) {
+						$('#result').html(JSON.stringify(res));
+					},
+					error: function(a, status) {
+						$('#result').html(status);
+					}
+				})
+			};
+		</script>
+	</body>
+</html>

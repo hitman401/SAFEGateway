@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>SAFEGateway</title>
+		<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+		<script type="application/javascript" src="scripts/main.js"></script>
+		<style>
+			body {
+				font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+			}
+			.center {
+				width: 350px;
+				height: 300px;
+				position: absolute;
+				top:0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				margin: auto;
+			}
+			.margin-10-bottom {
+				margin: 0 0 10px 0;
+			}
+			label {
+				width: 80px;
+				font-size: 17px
+			}
+			.card {
+				width: 100%;
+				margin-bottom: 5px;
+				box-shadow: 0 0 1px 0 #000000;
+			}
+			.appname {
+				font-weight: bold;
+			}
+			.vendor {
+				font-weight: 300;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="login" class="center">
+			<div class="margin-10-bottom">
+				<label for="keyword">Keyword</label>
+				<input id="keyword" required="true">
+			</div>
+			<div class="margin-10-bottom">
+				<label for="pin">Pin</label>
+				<input id="pin" required="true">
+			</div>
+			<div class="margin-10-bottom">
+				<label for="password">Password</label>
+				<input id="password" required="true">
+			</div>
+			<input type="button" value="Login" style="margin: 0 140px" onclick="validate()">
+		</div>
+		<div id="sessions" style="display: none">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-sm-12">
+						<h3>Active Sessions</h3>
+					</div>
+				</div>
+				<div class="row">
+					<div id="sessions_list" class="col-sm-12">
+						<!--<div class="column card">-->
+							<!--<div class="row">-->
+								<!--<div class="col-sm-10">-->
+									<!--<div class="appname margin-10-bottom">NAME</div>-->
+									<!--<div class="vendor">Vendor</div>-->
+								<!--</div>-->
+								<!--<div class="col-sm-2 margin-10-bottom">-->
+									<!--<div onclick="moreInfo(id)">More Info</div>-->
+									<!--<div onclick="remove(id)">Delete</div>-->
+								<!--</div>-->
+							<!--</div>-->
+						<!--</div>-->
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

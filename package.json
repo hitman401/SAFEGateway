@@ -1,0 +1,43 @@
+{
+  "name": "safegateway",
+  "productName": "Safegateway",
+  "version": "0.0.0",
+  "description": "My tiptop app",
+  "license": "MIT",
+  "main": "index.js",
+  "repository": "krishnaIndia/safegateway",
+  "author": {
+    "name": "krishna",
+    "email": "krishnaof1988@gmail.com",
+    "url": "maidsafe.net"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-packager . SAFEGateway --out=output --ignore=output --prune --asar --platform=win32 --arch=x64 --version=0.30.0",
+    "build-osx": "electron-packager . SAFEGateway --out=output --ignore=output --prune --asar --platform=darwin --arch=x64 --version=0.30.0"
+  },
+  "files": [
+    "index.js",
+    "index.html",
+    "index.css"
+  ],
+  "keywords": [
+    "electron-app"
+  ],
+  "dependencies": {
+    "auth-header": "^0.2.2",
+    "body-parser": "^1.14.2",
+    "electron-debug": "^0.1.1",
+    "http-proxy": "^1.12.0",
+    "jsonwebtoken": "^5.5.0",
+    "libsodium-wrappers": "^0.2.12",
+    "mime": "^1.3.4"
+  },
+  "devDependencies": {
+    "electron-packager": "^5.0.0",
+    "electron-prebuilt": "^0.30.0"
+  }
+}
