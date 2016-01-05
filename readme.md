@@ -58,7 +58,7 @@ Setting reference is linked [here](http://www.lib.berkeley.edu/using-the-librari
 ## Dev
 
 ```
-$ npm install
+$ npm install && bower install
 ```
 
 ### Run
